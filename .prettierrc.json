@@ -1,0 +1,23 @@
+{
+  "tabWidth": 4,
+  "printWidth": 120,
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "arrowParens": "always",
+  "endOfLine": "crlf",
+  "overrides": [
+    {
+      "files": [
+        "*.md",
+        "*.mdx",
+        "*.json",
+        "*.yml",
+        "*.yaml"
+      ],
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
+}
