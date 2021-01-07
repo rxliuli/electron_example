@@ -7,7 +7,7 @@
     "watch": "yarn compile -w",
     "dev:web": "lerna run --scope renderer start",
     "dev:electron": "electron ./dist/main.js",
-    "pkg": "electron-builder --dir"
+    "pkg": "electron-builder"
   },
   "devDependencies": {
     "electron": "10.2.0",
