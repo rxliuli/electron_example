@@ -24,7 +24,7 @@ export async function clean() {
  */
 export async function copyStatic() {
     await copyByMap([
-        ['../renderer/build', 'dist/build'],
+        ['../renderer/build', 'dist/'],
     ])
 }
 
