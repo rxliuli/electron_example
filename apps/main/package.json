@@ -6,7 +6,7 @@
     "compile": "tsc",
     "watch": "yarn compile -w",
     "dev:web": "lerna run --scope renderer start",
-    "dev:electron": "electron ./dist/main.js",
+    "dev:electron": "env-cmd -e dev electron ./dist/main.js",
     "build:web": "lerna run --scope renderer build",
     "pkg": "gulp clean && yarn compile && yarn build:web && gulp copyStatic && electron-builder"
   },
@@ -16,6 +16,7 @@
     "@types/node": "^12.19.12",
     "electron": "10.2.0",
     "electron-builder": "^22.9.1",
+    "env-cmd": "^10.1.0",
     "fs-extra": "^9.0.1",
     "gulp": "^4.0.2",
     "ts-node": "^9.1.1",
