@@ -7,7 +7,8 @@
     "watch": "yarn compile -w",
     "dev:web": "lerna run --scope renderer start",
     "dev:electron": "electron ./dist/main.js",
-    "pkg": "gulp copyStatic && electron-builder"
+    "build:web": "lerna run --scope renderer build",
+    "pkg": "yarn build:web && gulp copyStatic && electron-builder"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.6",
