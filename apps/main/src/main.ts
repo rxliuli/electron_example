@@ -1,6 +1,11 @@
 import { app, BrowserWindow } from 'electron'
 import path = require('path')
 
+//添加热更新功能
+if (process.env.NODE_ENV === 'development') {
+    require('electron-reloader')(module)
+}
+
 async function createMainWindow() {
     // 创建新的 electron 窗口
     const mainWindow = new BrowserWindow()
