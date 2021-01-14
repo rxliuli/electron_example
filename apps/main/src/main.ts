@@ -1,6 +1,5 @@
 import { app, BrowserWindow } from 'electron'
 import path = require('path')
-import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer'
 
 async function createMainWindow() {
     // 创建新的 electron 窗口
@@ -19,6 +18,10 @@ async function main() {
     app.addListener('ready', async () => {
         if (process.env.NODE_ENV === 'development') {
             // 安装 devtool 扩展
+            const {
+                default: installExtension,
+                REACT_DEVELOPER_TOOLS,
+            } = require('electron-devtools-installer') as typeof import('electron-devtools-installer')
             await installExtension(REACT_DEVELOPER_TOOLS)
         }
 
