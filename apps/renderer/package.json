@@ -21,10 +21,10 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "craco start",
+    "build:cra": "react-scripts build",
+    "build": "craco build",
+    "test": "craco test"
   },
   "eslintConfig": {
     "extends": [
@@ -36,8 +36,10 @@
     "last 1 chrome version"
   ],
   "devDependencies": {
+    "@craco/craco": "^6.0.0",
     "@types/react-router": "^5.1.10",
     "@types/react-router-config": "^5.0.2",
-    "@types/react-router-dom": "^5.1.7"
+    "@types/react-router-dom": "^5.1.7",
+    "craco-esbuild": "^0.1.0"
   }
 }
