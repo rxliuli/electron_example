@@ -1,21 +1,15 @@
 import { IpcRendererClient } from './IpcRendererClient'
 import { DependencyList, useEffect } from 'react'
-import { FilteredKeys } from './IpcRendererDefine'
 import { BaseDefine } from 'electron_ipc_type'
+import { FunctionKeys } from 'utility-types'
 
-type IpcRendererProviderDefine<
-    T extends BaseDefine<string>,
-    P extends FilteredKeys<T, (...args: any[]) => void> = FilteredKeys<T, (...args: any[]) => void>
-> = [
-    type: FilteredKeys<T, (...args: any[]) => void>,
+type IpcRendererProviderDefine<T extends BaseDefine<string>, P extends FunctionKeys<T> = FunctionKeys<T>> = [
+    type: P,
     callback: (e: any, ...args: Parameters<T[P]>) => Promise<ReturnType<T[P]>>,
 ]
 
-type IpcRendererProviderHooksDefine<
-    T extends BaseDefine<string>,
-    P extends FilteredKeys<T, (...args: any[]) => void> = FilteredKeys<T, (...args: any[]) => void>
-> = [
-    type: FilteredKeys<T, (...args: any[]) => void>,
+type IpcRendererProviderHooksDefine<T extends BaseDefine<string>, P extends FunctionKeys<T> = FunctionKeys<T>> = [
+    type: P,
     callback: (e: any, ...args: Parameters<T[P]>) => Promise<ReturnType<T[P]>>,
     deps?: DependencyList,
 ]

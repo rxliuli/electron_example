@@ -1,15 +1,9 @@
 import type { IpcMainInvokeEvent } from 'electron'
-
-export type FilteredKeys<T, U> = {
-    [P in keyof T]: T[P] extends U ? P : never
-}[keyof T]
+import { FunctionKeys } from 'utility-types'
 
 /**
  * 转换为一个主进程可以实现的接口
  */
-export type IpcMainDefine<T> = {
-    [P in FilteredKeys<T, (...args: any[]) => void>]: (
-        e: IpcMainInvokeEvent,
-        ...args: Parameters<T[P]>
-    ) => Promise<ReturnType<T[P]>>
+export type IpcMainDefine<T extends object> = {
+    [P in FunctionKeys<T>]: (e: IpcMainInvokeEvent, ...args: Parameters<T[P]>) => Promise<ReturnType<T[P]>>
 }

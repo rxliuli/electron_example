@@ -1,15 +1,12 @@
 import { BaseDefine } from 'electron_ipc_type'
 import { BrowserWindow, ipcMain } from 'electron'
-
-export type FilteredKeys<T, U> = {
-    [P in keyof T]: T[P] extends U ? P : never
-}[keyof T]
+import { FunctionKeys } from 'utility-types'
 
 /**
  * 转换为一个渲染进程可以调用的 Proxy 对象
  */
-export type IpcClientDefine<T> = {
-    [P in FilteredKeys<T, (...args: any[]) => void>]: (...args: Parameters<T[P]>) => Promise<ReturnType<T[P]>>
+export type IpcClientDefine<T extends object> = {
+    [P in FunctionKeys<T>]: (...args: Parameters<T[P]>) => Promise<ReturnType<T[P]>>
 }
 
 /**
@@ -23,7 +20,7 @@ export class IpcMainClient {
      */
     static gen<T extends BaseDefine<string>>(namespace: T['namespace'], win: BrowserWindow): IpcClientDefine<T> {
         return new Proxy(Object.create(null), {
-            get<K extends FilteredKeys<T, (...args: any[]) => any>>(target: any, api: K): any {
+            get<K extends FunctionKeys<T>>(target: any, api: K): any {
                 const key = namespace + '.' + api
                 return function (...args: any[]) {
                     return new Promise<ReturnType<T[K]>>((resolve, reject) => {
