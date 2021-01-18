@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { IpcRendererClient, NotElectronEnvError } from 'electron_ipc_renderer'
 import { HelloDefine } from 'shared_type'
 
-const helloApi = IpcRendererClient.gen<HelloDefine>('HelloApi', ['hello'])
+const helloApi = IpcRendererClient.gen<HelloDefine>('HelloApi')
 
 function App() {
     const [text, setText] = useState('')

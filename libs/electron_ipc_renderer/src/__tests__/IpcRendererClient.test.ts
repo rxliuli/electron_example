@@ -19,7 +19,7 @@ describe('测试 IpcRendererClient', () => {
         const ipcProvider = new IpcMainProvider()
         ipcProvider.register<HelloApiDefine>('HelloApi', new HelloApi())
 
-        const client = IpcRendererClient.gen<HelloApiDefine>('HelloApi', ['hello'])
+        const client = IpcRendererClient.gen<HelloApiDefine>('HelloApi')
         expect(await client.hello('liuli')).toBe('hello liuli')
     })
 })
