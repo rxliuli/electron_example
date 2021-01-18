@@ -2,6 +2,7 @@ import type { IpcRenderer } from 'electron'
 import isElectron from 'is-electron'
 import { FilteredKeys, IpcRendererDefine } from './IpcRendererDefine'
 import { NotElectronEnvError } from './NotElectronEnvError'
+import { BaseDefine } from 'electron_ipc_type'
 
 export class IpcRendererClient {
     /**
@@ -9,7 +10,7 @@ export class IpcRendererClient {
      * @param namespace
      * @param apiList
      */
-    static gen<T extends { namespace: string }>(
+    static gen<T extends BaseDefine<string>>(
         namespace: T['namespace'],
         apiList: FilteredKeys<T, (...args: any[]) => void>[],
     ): IpcRendererDefine<T> {

@@ -1,6 +1,7 @@
 import { ClassUtil } from '@liuli-util/object'
 import { ipcMain } from 'electron'
 import { IpcMainDefine } from './IpcMainDefine'
+import { BaseDefine } from 'electron_ipc_type'
 
 export class IpcMainProvider {
     private readonly clazzMap = new Map<string, object>()
@@ -15,10 +16,7 @@ export class IpcMainProvider {
         return namespace + '.' + method.toString()
     }
 
-    register<T extends { namespace: string }>(
-        namespace: IpcMainDefine<T>[0],
-        api: IpcMainDefine<T>[1],
-    ): IpcMainDefine<T>[1] {
+    register<T extends BaseDefine<string>>(namespace: T['namespace'], api: IpcMainDefine<T>): IpcMainDefine<T> {
         const instance = ClassUtil.bindMethodThis(api)
         const methods = ClassUtil.scan(instance)
         methods.forEach((method) => {
@@ -30,7 +28,7 @@ export class IpcMainProvider {
         return instance
     }
 
-    unregister<T extends { namespace: string }>(namespace: IpcMainDefine<T>[0], api: IpcMainDefine<T>[1]): void {
+    unregister<T extends BaseDefine<string>>(namespace: T['namespace'], api: IpcMainDefine<T>): void {
         const methods = ClassUtil.scan(api)
         methods.forEach((method) => {
             const key = IpcMainProvider.getKey(namespace, method)
