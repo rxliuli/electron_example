@@ -12,6 +12,6 @@ export const ipcRenderer: DeepPartial<IpcRenderer> = {
         if (!map.has(type)) {
             throw new Error('未注册: ' + type)
         }
-        return map.get(type)(null, ...args)
+        return map.get(type)!(null, ...args)
     }),
 }

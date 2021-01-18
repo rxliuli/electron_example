@@ -1,23 +1,25 @@
-import { IpcMainDefine, IpcMainProvider } from 'electron_ipc_main'
 import { IpcRendererClient } from '../IpcRendererClient'
-import { IpcRendererDefine } from '../IpcRendererDefine'
+import { IpcMainInvokeEvent } from 'electron'
+import { IpcMainProvider } from 'electron_ipc_main'
 
 describe('测试 IpcRendererClient', () => {
-    it('基本示例', async () => {
+    it.skip('基本示例', async () => {
         interface HelloApiDefine {
+            namespace: 'HelloApi'
+
             hello(name: string): string
         }
 
         class HelloApi {
-            async hello(e, name: string) {
+            async hello(e: IpcMainInvokeEvent, name: string) {
                 return `hello ${name}`
             }
         }
 
         const ipcProvider = new IpcMainProvider()
-        ipcProvider.register<IpcMainDefine<HelloApiDefine>>('HelloApi', new HelloApi())
+        ipcProvider.register<HelloApiDefine>('HelloApi', new HelloApi())
 
-        const client = IpcRendererClient.gen<IpcRendererDefine<HelloApiDefine>>('HelloApi', ['hello'])
+        const client = IpcRendererClient.gen<HelloApiDefine>('HelloApi', ['hello'])
         expect(await client.hello('liuli')).toBe('hello liuli')
     })
 })

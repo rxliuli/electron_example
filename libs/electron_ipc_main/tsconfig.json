@@ -1,24 +1,30 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
-    "target": "ES5",
+    "target": "es6",
     "lib": [
-      "ESNext"
+      "esnext"
     ],
-    "rootDir": "src",
-    "outDir": "dist",
+    "outDir": "./dist",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "pretty": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true
+    "allowJs": true,
+    "noFallthroughCasesInSwitch": true,
+    "noEmit": true
   },
   "include": [
     "src"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "gulpfile.ts"
   ]
 }

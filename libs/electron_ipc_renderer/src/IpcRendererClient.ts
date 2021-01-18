@@ -1,6 +1,7 @@
 import type { IpcRenderer } from 'electron'
 import isElectron from 'is-electron'
-import { IpcRendererDefine } from './IpcRendererDefine'
+import { FilteredKeys, IpcRendererDefine } from './IpcRendererDefine'
+import { NotElectronEnvError } from './NotElectronEnvError'
 
 export class IpcRendererClient {
     /**
@@ -8,13 +9,16 @@ export class IpcRendererClient {
      * @param namespace
      * @param apiList
      */
-    static gen<T>(namespace: string, apiList: (keyof T)[]): IpcRendererDefine<T> {
+    static gen<T extends { namespace: string }>(
+        namespace: T['namespace'],
+        apiList: FilteredKeys<T, (...args: any[]) => void>[],
+    ): IpcRendererDefine<T> {
         return apiList.reduce((res, api) => {
             const key = namespace + '.' + api
             res[api] = (...args: any[]) => {
                 const ipcRenderer = IpcRendererClient.getRenderer()
                 if (!ipcRenderer) {
-                    throw new Error('当前你不在 electron 进程中')
+                    throw new NotElectronEnvError('当前你不在 electron 进程中')
                 }
                 return ipcRenderer.invoke(key, ...args)
             }

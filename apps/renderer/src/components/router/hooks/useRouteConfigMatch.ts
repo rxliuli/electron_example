@@ -1,8 +1,7 @@
-// noinspection ES6PreferShortImport
 import { useLocation } from 'react-router'
 import { useMemo } from 'react'
 import { matchRoutes, RouteConfig } from 'react-router-config'
-import { treeToList } from '../../../common/util'
+import { treeToList } from '@liuli-util/tree'
 
 /**
  * 获取当前路由匹配的路由定义配置，用以获取配置中的元数据（{@link RouteConfig.meta} 字段）

@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "homepage": ".",
+  "scripts": {
+    "start": "craco start",
+    "build:cra": "react-scripts build",
+    "build": "craco build",
+    "test": "craco test"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
@@ -18,13 +24,10 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "typescript": "^4.1.3",
-    "web-vitals": "^0.2.4"
-  },
-  "scripts": {
-    "start": "craco start",
-    "build:cra": "react-scripts build",
-    "build": "craco build",
-    "test": "craco test"
+    "web-vitals": "^0.2.4",
+    "electron_ipc_renderer": "*",
+    "shared_type": "*",
+    "@liuli-util/tree": "^2.4.0"
   },
   "eslintConfig": {
     "extends": [
@@ -40,6 +43,7 @@
     "@types/react-router": "^5.1.10",
     "@types/react-router-config": "^5.0.2",
     "@types/react-router-dom": "^5.1.7",
-    "craco-esbuild": "^0.1.0"
+    "craco-esbuild": "^0.1.0",
+    "jest": "26.6.0"
   }
 }

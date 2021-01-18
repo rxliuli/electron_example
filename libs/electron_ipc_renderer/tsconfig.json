@@ -1,25 +1,33 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "ESNext",
+    "target": "es6",
     "lib": [
-      "ESNext",
+      "esnext",
       "DOM"
     ],
-    "rootDir": "src",
-    "outDir": "dist",
-    "sourceMap": true,
+    "outDir": "./dist",
     "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "pretty": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
-    "skipDefaultLibCheck": true
+    "allowJs": true,
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
     "src"
   ],
   "exclude": [
-    "node_modules",
-    "dist",
-    "gulpfile.ts"
+    "**/__tests__"
   ]
 }

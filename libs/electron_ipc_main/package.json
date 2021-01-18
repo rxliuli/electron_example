@@ -2,10 +2,11 @@
   "name": "electron_ipc_main",
   "version": "0.1.0",
   "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "compile": "tsc",
-    "watch": "yarn compile -w"
+    "build": "rollup -c",
+    "pub": "yarn build"
   },
   "peerDependencies": {
     "electron": "^10.2.0"
@@ -20,8 +21,9 @@
     "@liuli-util/object": "^2.4.0"
   },
   "devDependencies": {
-    "utility-types": "^3.10.0",
-    "jest": "^26.6.3",
-    "ts-jest": "^26.4.4"
+    "jest": "26.6.0",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "ts-jest": "^26.4.4",
+    "utility-types": "^3.10.0"
   }
 }
