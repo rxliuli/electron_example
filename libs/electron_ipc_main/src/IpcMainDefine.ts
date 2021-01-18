@@ -1,6 +1,6 @@
 import type { IpcMainInvokeEvent } from 'electron'
 
-type FilteredKeys<T, U> = {
+export type FilteredKeys<T, U> = {
     [P in keyof T]: T[P] extends U ? P : never
 }[keyof T]
 

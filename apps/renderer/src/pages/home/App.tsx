@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { IpcRendererClient, NotElectronEnvError } from 'electron_ipc_renderer'
+import { IpcRendererClient, IpcRendererProvider, NotElectronEnvError } from 'electron_ipc_renderer'
 import { HelloDefine } from 'shared_type'
 
 const helloApi = IpcRendererClient.gen<HelloDefine>('HelloApi')
+const ipcRendererProvider = new IpcRendererProvider<HelloDefine>('HelloApi')
 
 function App() {
     const [text, setText] = useState('')
@@ -22,6 +23,15 @@ function App() {
     function onClear() {
         setText('')
     }
+
+    ipcRendererProvider.useIpcProvider(
+        'hello',
+        async (e, name) => {
+            console.log('ipcRendererProvider.useIpcProvider: ', name)
+            return `hello ${name}`
+        },
+        [],
+    )
 
     return (
         <div>

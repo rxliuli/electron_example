@@ -5,8 +5,12 @@
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rimraf dist && rollup -c",
-    "pub": "yarn build"
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
+    "pub": "rimraf dist && yarn build"
+  },
+  "peerDependencies": {
+    "react": "^17.0.1"
   },
   "dependencies": {
     "is-electron": "^2.2.0",

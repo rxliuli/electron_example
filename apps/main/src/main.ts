@@ -2,6 +2,7 @@ import { app, BrowserWindow, IpcMainInvokeEvent } from 'electron'
 import path = require('path')
 import { IpcMainProvider } from 'electron_ipc_main'
 import { HelloDefine } from 'shared_type'
+import { IpcMainClient } from 'electron_ipc_main'
 
 //添加热更新功能
 if (process.env.NODE_ENV === 'development') {
@@ -20,6 +21,7 @@ async function createMainWindow() {
     if (process.env.NODE_ENV === 'development') {
         mainWindow.webContents.openDevTools()
     }
+    return mainWindow
 }
 
 class HelloApi {
@@ -45,7 +47,10 @@ async function main() {
         }
 
         ipcMainProvider.register<HelloDefine>('HelloApi', new HelloApi())
-        await createMainWindow()
+        const mainWindow = await createMainWindow()
+        const helloApi = IpcMainClient.gen<HelloDefine>('HelloApi', mainWindow)
+        const resp = await helloApi.hello('liuli')
+        console.log('resp: ', resp)
     })
 }
 
