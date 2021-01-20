@@ -46,7 +46,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
     return (
         <div className={css.basicLayout}>
             <div className={css.toolbar}>
-                <header>electron_example</header>
+                <header>electron_example v0.1.5</header>
                 {isElectron() && <ElectronWindowControl />}
             </div>
             <div>{props.children}</div>

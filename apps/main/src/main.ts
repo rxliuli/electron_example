@@ -1,8 +1,9 @@
-import { app, BrowserWindow, IpcMainInvokeEvent } from 'electron'
+import { app, BrowserWindow, IpcMainInvokeEvent, Notification } from 'electron'
 import path = require('path')
 import { IpcMainProvider } from 'electron_ipc_main'
 import { HelloDefine, WindowDefine } from 'shared_type'
 import { IpcMainClient } from 'electron_ipc_main'
+import { autoUpdater } from 'electron-updater'
 
 //添加热更新功能
 if (process.env.NODE_ENV === 'development') {
@@ -71,6 +72,18 @@ async function main() {
         const helloApi = IpcMainClient.gen<HelloDefine>('HelloApi', mainWindow)
         const resp = await helloApi.hello('liuli')
         console.log('resp: ', resp)
+
+        await autoUpdater.checkForUpdates()
+        autoUpdater.on('update-downloaded', () => {
+            new Notification({
+                title: '更新提醒',
+                body: '更新已经下载完成，点击立刻更新！',
+            })
+                .addListener('click', () => {
+                    autoUpdater.quitAndInstall()
+                })
+                .show()
+        })
     })
 }
 
