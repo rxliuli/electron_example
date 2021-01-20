@@ -19,6 +19,7 @@
     "@types/react": "^16.14.2",
     "@types/react-dom": "^16.9.10",
     "electron_ipc_renderer": "*",
+    "normalize.css": "^8.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router": "^5.2.0",

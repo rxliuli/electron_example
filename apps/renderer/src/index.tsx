@@ -4,12 +4,15 @@ import './index.css'
 import reportWebVitals from './reportWebVitals'
 import { HashRouter } from 'react-router-dom'
 import { RouteRender } from './components/router'
+import BasicLayout from './components/router/component/BasicLayout'
 
 ReactDOM.render(
     <React.StrictMode>
         <HashRouter>
             <Suspense fallback={'App 加载中...'}>
-                <RouteRender />
+                <BasicLayout>
+                    <RouteRender />
+                </BasicLayout>
             </Suspense>
         </HashRouter>
     </React.StrictMode>,
