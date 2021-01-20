@@ -15,6 +15,8 @@ async function createMainWindow() {
         webPreferences: {
             nodeIntegration: true,
         },
+        frame: false,
+        autoHideMenuBar: true,
     })
     // 载入生产环境的 url
     await mainWindow.loadURL(process.env.ELECTRON_START_URL || path.join(__dirname, './build/index.html'))
