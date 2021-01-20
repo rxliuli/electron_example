@@ -74,10 +74,10 @@ async function main() {
         console.log('resp: ', resp)
 
         await autoUpdater.checkForUpdates()
-        autoUpdater.on('update-downloaded', () => {
+        autoUpdater.addListener('update-downloaded', (info) => {
             new Notification({
                 title: '更新提醒',
-                body: '更新已经下载完成，点击立刻更新！',
+                body: `新版本 ${info.version} 已经准备好，点击立刻更新！`,
             })
                 .addListener('click', () => {
                     autoUpdater.quitAndInstall()
