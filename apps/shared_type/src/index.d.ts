@@ -1,2 +1,2 @@
 export * from './HelloDefine'
-export * from './WindowApiDefine'
+export * from './WindowDefine'

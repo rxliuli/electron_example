@@ -1,26 +1,22 @@
 import * as React from 'react'
 import css from './BasicLayout.module.css'
 import isElectron from 'is-electron'
+import { IpcRendererClient } from 'electron_ipc_renderer'
+import { WindowDefine } from 'shared_type/src'
 
 type BasicLayoutProps = {}
+
+const windowApi = IpcRendererClient.gen<WindowDefine>('WindowApi')
 
 /**
  * 封装 electron 的窗口控制 hooks
  */
 function useElectronWindowControl() {
-    function handleMin() {
-        throw new Error('no impl')
+    return {
+        handleMin: () => windowApi.action('min'),
+        handleMax: () => windowApi.action('max'),
+        handleClose: () => windowApi.action('close'),
     }
-
-    function handleMax() {
-        throw new Error('no impl')
-    }
-
-    function handleClose() {
-        throw new Error('no impl')
-    }
-
-    return { handleMin, handleMax, handleClose }
 }
 
 function ElectronWindowControl() {

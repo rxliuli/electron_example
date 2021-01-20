@@ -1,7 +1,7 @@
 import { app, BrowserWindow, IpcMainInvokeEvent } from 'electron'
 import path = require('path')
 import { IpcMainProvider } from 'electron_ipc_main'
-import { HelloDefine } from 'shared_type'
+import { HelloDefine, WindowDefine } from 'shared_type'
 import { IpcMainClient } from 'electron_ipc_main'
 
 //添加热更新功能
@@ -30,6 +30,23 @@ class HelloApi {
     }
 }
 
+class WindowApi {
+    async action(e: IpcMainInvokeEvent, type: 'min' | 'max' | 'close') {
+        const win = BrowserWindow.fromWebContents(e.sender)
+        switch (type) {
+            case 'min':
+                win.minimize()
+                break
+            case 'max':
+                win.isMaximized() ? win.unmaximize() : win.maximize()
+                break
+            case 'close':
+                win.close()
+                break
+        }
+    }
+}
+
 const ipcMainProvider = new IpcMainProvider()
 
 /**
@@ -47,6 +64,7 @@ async function main() {
         }
 
         ipcMainProvider.register<HelloDefine>('HelloApi', new HelloApi())
+        ipcMainProvider.register<WindowDefine>('WindowApi', new WindowApi())
         const mainWindow = await createMainWindow()
         const helloApi = IpcMainClient.gen<HelloDefine>('HelloApi', mainWindow)
         const resp = await helloApi.hello('liuli')
