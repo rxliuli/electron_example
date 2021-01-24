@@ -4,6 +4,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
+    "setup": "yarn && lerna run pub && yarn",
     "fix:version": "syncpack fix-mismatches"
   },
   "workspaces": {
