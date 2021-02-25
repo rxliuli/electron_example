@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom'
+import 'normalize.css'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
 import { HashRouter } from 'react-router-dom'

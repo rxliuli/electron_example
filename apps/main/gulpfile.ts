@@ -23,8 +23,6 @@ export async function clean() {
  * 复制一些资源到 dist 目录中
  */
 export async function copyStatic() {
-    await copyByMap([
-        ['../renderer/build', 'dist/'],
-    ])
+    await copyByMap([['../renderer/dist', 'dist/']])
 }
 

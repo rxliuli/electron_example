@@ -7,7 +7,7 @@
     "watch": "yarn compile -w",
     "dev:web": "lerna run --scope renderer start",
     "dev:electron": "env-cmd -e dev electron ./dist/main.js",
-    "build:web": "lerna run --scope renderer build",
+    "build:web": "lerna run --scope renderer build:vite",
     "build:electron": "electron-builder",
     "pkg": "gulp clean && yarn compile && yarn build:web && gulp copyStatic && yarn build:electron"
   },

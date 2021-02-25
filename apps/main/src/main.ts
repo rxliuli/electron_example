@@ -20,7 +20,7 @@ async function createMainWindow() {
         autoHideMenuBar: true,
     })
     // 载入生产环境的 url
-    await mainWindow.loadURL(process.env.ELECTRON_START_URL || path.join(__dirname, './build/index.html'))
+    await mainWindow.loadURL(process.env.ELECTRON_START_URL || path.join(__dirname, './dist/index.html'))
     if (process.env.NODE_ENV === 'development') {
         mainWindow.webContents.openDevTools()
     }
