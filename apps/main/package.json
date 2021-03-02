@@ -2,6 +2,7 @@
   "name": "main",
   "version": "0.1.8",
   "main": "dist/main.js",
+  "license": "MIT",
   "scripts": {
     "compile": "tsc",
     "watch": "yarn compile -w",
@@ -13,7 +14,7 @@
   },
   "dependencies": {
     "electron-updater": "^4.3.5",
-    "electron_ipc_main": "*"
+    "electron-ipc-main": "*"
   },
   "devDependencies": {
     "@types/electron-devtools-installer": "^2.2.0",

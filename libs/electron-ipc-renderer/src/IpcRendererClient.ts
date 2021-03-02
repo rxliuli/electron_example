@@ -2,7 +2,7 @@ import type { IpcRenderer } from 'electron'
 import isElectron from 'is-electron'
 import { IpcRendererDefine } from './IpcRendererDefine'
 import { NotElectronEnvError } from './NotElectronEnvError'
-import { BaseDefine } from 'electron_ipc_type'
+import { BaseDefine } from 'electron-ipc-type'
 
 export class IpcRendererClient {
     /**

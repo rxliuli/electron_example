@@ -1,4 +1,4 @@
-import { BaseDefine } from 'electron_ipc_type'
+import { BaseDefine } from 'electron-ipc-type'
 import { BrowserWindow, ipcMain } from 'electron'
 import { FunctionKeys } from 'utility-types'
 

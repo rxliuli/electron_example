@@ -1,6 +1,6 @@
 import { IpcRendererClient } from '../IpcRendererClient'
 import { IpcMainInvokeEvent } from 'electron'
-import { IpcMainProvider } from 'electron_ipc_main'
+import { IpcMainProvider } from 'electron-ipc-main'
 
 describe('测试 IpcRendererClient', () => {
     it.skip('基本示例', async () => {

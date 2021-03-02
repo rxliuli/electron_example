@@ -1,5 +1,5 @@
 import { IpcRendererProvider } from '../IpcRendererProvider'
-import { BaseDefine } from 'electron_ipc_type'
+import { BaseDefine } from 'electron-ipc-type'
 
 describe.skip('测试 IpcRendererProvider', () => {
     interface HelloApiDefine extends BaseDefine<'HelloApi'> {

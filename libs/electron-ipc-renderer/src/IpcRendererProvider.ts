@@ -1,6 +1,6 @@
 import { IpcRendererClient } from './IpcRendererClient'
 import { DependencyList, useEffect } from 'react'
-import { BaseDefine } from 'electron_ipc_type'
+import { BaseDefine } from 'electron-ipc-type'
 import { FunctionKeys } from 'utility-types'
 
 type IpcRendererProviderDefine<T extends BaseDefine<string>, P extends FunctionKeys<T> = FunctionKeys<T>> = [

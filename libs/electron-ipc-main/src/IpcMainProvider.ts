@@ -1,7 +1,7 @@
 import { ClassUtil } from '@liuli-util/object'
 import { ipcMain } from 'electron'
 import { IpcMainDefine } from './IpcMainDefine'
-import { BaseDefine } from 'electron_ipc_type'
+import { BaseDefine } from 'electron-ipc-type'
 
 export class IpcMainProvider {
     private readonly clazzMap = new Map<string, object>()

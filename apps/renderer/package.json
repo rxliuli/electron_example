@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@liuli-util/tree": "^2.4.0",
-    "electron_ipc_renderer": "*",
+    "electron-ipc-renderer": "*",
     "normalize.css": "^8.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -21,7 +21,7 @@
     "react-router-config": "^5.1.1",
     "react-router-dom": "^5.2.0",
     "react-use": "^15.3.8",
-    "shared_type": "*"
+    "shared-type": "*"
   },
   "eslintConfig": {
     "extends": [

@@ -1,5 +1,5 @@
 {
-  "name": "shared_type",
+  "name": "shared-type",
   "version": "0.1.0",
   "main": "src/index.d.ts",
   "types": "src/index.d.ts",
@@ -9,6 +9,6 @@
   "devDependencies": {
     "jest": "26.6.0",
     "ts-jest": "^26.4.4",
-    "electron_ipc_type": "*"
+    "electron-ipc-type": "*"
   }
 }

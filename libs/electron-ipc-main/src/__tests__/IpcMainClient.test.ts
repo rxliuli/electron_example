@@ -1,5 +1,5 @@
 import { IpcMainClient } from '../IpcMainClient'
-import { BaseDefine } from 'electron_ipc_type'
+import { BaseDefine } from 'electron-ipc-type'
 import { BrowserWindow } from 'electron'
 
 describe.skip('测试 IpcMainClient', () => {

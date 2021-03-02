@@ -1,8 +1,8 @@
 import { app, BrowserWindow, IpcMainInvokeEvent, Notification } from 'electron'
 import path = require('path')
-import { IpcMainProvider } from 'electron_ipc_main'
-import { HelloDefine, WindowDefine } from 'shared_type'
-import { IpcMainClient } from 'electron_ipc_main'
+import { IpcMainProvider } from 'electron-ipc-main'
+import { HelloDefine, WindowDefine } from 'shared-type'
+import { IpcMainClient } from 'electron-ipc-main'
 import { autoUpdater } from 'electron-updater'
 
 //添加热更新功能
