@@ -1,7 +1,7 @@
 .basicLayout {
     height: 100%;
     display: grid;
-    grid-template-rows: 40px 1fr;
+    grid-template-rows: 32px 1fr;
 }
 
 .toolbar {
@@ -9,6 +9,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 16px;
+    background: #40a9ff;
+    color: #ffffff;
     /*noinspection CssUnknownProperty*/
     -webkit-app-region: drag;
 }
@@ -22,17 +24,19 @@
     box-sizing: border-box;
     display: inline-block;
     padding: 0;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0);
+    width: 40px;
     text-align: center;
+    height: 32px;
+    background: #40a9ff;
     vertical-align: middle;
     outline: none;
     border: none;
     transition-property: background-color;
     transition-delay: 0.1s;
     cursor: pointer;
+    color: #ffffff;
 }
 
-.button:not(:last-child) {
-    margin-right: 8px;
+.button:hover {
+    background: #1890ff;
 }

@@ -1,24 +1,27 @@
 {
   "name": "main",
-  "version": "0.1.0",
+  "version": "0.1.8",
   "main": "dist/main.js",
+  "license": "MIT",
   "scripts": {
     "compile": "tsc",
     "watch": "yarn compile -w",
     "dev:web": "lerna run --scope renderer start",
     "dev:electron": "env-cmd -e dev electron ./dist/main.js",
-    "build:web": "lerna run --scope renderer build",
-    "pkg": "gulp clean && yarn compile && yarn build:web && gulp copyStatic && electron-builder"
+    "build:web": "lerna run --scope renderer build:vite",
+    "build:electron": "electron-builder",
+    "pkg": "gulp clean && yarn compile && yarn build:web && gulp copyStatic && yarn build:electron"
   },
   "dependencies": {
-    "electron_ipc_main": "*"
+    "electron-updater": "^4.3.5",
+    "electron-ipc-main": "*"
   },
   "devDependencies": {
     "@types/electron-devtools-installer": "^2.2.0",
     "@types/fs-extra": "^9.0.6",
     "@types/gulp": "^4.0.7",
     "@types/node": "^12.19.12",
-    "electron": "^10.2.0",
+    "electron": "10.2.0",
     "electron-builder": "^22.9.1",
     "electron-devtools-installer": "^3.1.1",
     "electron-reloader": "^1.1.0",
@@ -35,7 +38,12 @@
     "directories": {
       "output": "release"
     },
-    "electronVersion": "10.2.0",
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://localhost:8080/"
+      }
+    ],
     "win": {
       "target": [
         "nsis"

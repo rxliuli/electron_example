@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { IpcRendererClient, IpcRendererProvider, NotElectronEnvError } from 'electron_ipc_renderer'
-import { HelloDefine } from 'shared_type'
+import { IpcRendererClient, IpcRendererProvider, NotElectronEnvError } from 'electron-ipc-renderer'
+import { HelloDefine } from 'shared-type'
 
 const helloApi = IpcRendererClient.gen<HelloDefine>('HelloApi')
 const ipcRendererProvider = new IpcRendererProvider<HelloDefine>('HelloApi')

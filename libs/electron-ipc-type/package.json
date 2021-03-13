@@ -1,0 +1,6 @@
+{
+  "name": "electron-ipc-type",
+  "version": "0.1.0",
+  "main": "src/index.d.ts",
+  "types": "src/index.d.ts"
+}

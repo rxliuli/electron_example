@@ -1,6 +1,0 @@
-{
-  "name": "electron_ipc_type",
-  "version": "0.1.0",
-  "main": "src/index.d.ts",
-  "types": "src/index.d.ts"
-}

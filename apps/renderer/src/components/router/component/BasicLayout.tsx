@@ -1,8 +1,11 @@
 import * as React from 'react'
 import css from './BasicLayout.module.css'
 import isElectron from 'is-electron'
-import { IpcRendererClient } from 'electron_ipc_renderer'
-import { WindowDefine } from 'shared_type/src'
+import { IpcRendererClient } from 'electron-ipc-renderer'
+import { WindowDefine } from 'shared-type/src'
+import minimize from '../asset/minimize.svg'
+import maximize from '../asset/maximize.svg'
+import close from '../asset/close.svg'
 
 type BasicLayoutProps = {}
 
@@ -24,13 +27,13 @@ function ElectronWindowControl() {
     return (
         <div>
             <button className={css.button} onClick={handleMin}>
-                min
+                <img src={minimize} alt={'minimize'} />
             </button>
             <button className={css.button} onClick={handleMax}>
-                max
+                <img src={maximize} alt={'maximize'} />
             </button>
             <button className={css.button} onClick={handleClose}>
-                close
+                <img src={close} alt={'close'} />
             </button>
         </div>
     )
@@ -43,7 +46,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
     return (
         <div className={css.basicLayout}>
             <div className={css.toolbar}>
-                <header>electron_example</header>
+                <header>electron_example v0.1.8</header>
                 {isElectron() && <ElectronWindowControl />}
             </div>
             <div>{props.children}</div>

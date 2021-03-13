@@ -1,8 +1,9 @@
-import { app, BrowserWindow, IpcMainInvokeEvent } from 'electron'
+import { app, BrowserWindow, IpcMainInvokeEvent, Notification } from 'electron'
 import path = require('path')
-import { IpcMainProvider } from 'electron_ipc_main'
-import { HelloDefine, WindowDefine } from 'shared_type'
-import { IpcMainClient } from 'electron_ipc_main'
+import { IpcMainProvider } from 'electron-ipc-main'
+import { HelloDefine, WindowDefine } from 'shared-type'
+import { IpcMainClient } from 'electron-ipc-main'
+import { autoUpdater } from 'electron-updater'
 
 //添加热更新功能
 if (process.env.NODE_ENV === 'development') {
@@ -15,9 +16,11 @@ async function createMainWindow() {
         webPreferences: {
             nodeIntegration: true,
         },
+        frame: false,
+        autoHideMenuBar: true,
     })
     // 载入生产环境的 url
-    await mainWindow.loadURL(process.env.ELECTRON_START_URL || path.join(__dirname, './build/index.html'))
+    await mainWindow.loadURL(process.env.ELECTRON_START_URL || path.join(__dirname, './dist/index.html'))
     if (process.env.NODE_ENV === 'development') {
         mainWindow.webContents.openDevTools()
     }
@@ -69,6 +72,18 @@ async function main() {
         const helloApi = IpcMainClient.gen<HelloDefine>('HelloApi', mainWindow)
         const resp = await helloApi.hello('liuli')
         console.log('resp: ', resp)
+
+        await autoUpdater.checkForUpdates()
+        autoUpdater.addListener('update-downloaded', (info) => {
+            new Notification({
+                title: '更新提醒',
+                body: `新版本 ${info.version} 已经准备好，点击立刻更新！`,
+            })
+                .addListener('click', () => {
+                    autoUpdater.quitAndInstall()
+                })
+                .show()
+        })
     })
 }
 

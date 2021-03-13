@@ -1,0 +1,28 @@
+{
+  "name": "electron-util",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "liuli-cli build",
+    "pub": "liuli-cli clean && yarn build"
+  },
+  "peerDependencies": {
+    "react": "^17.0.1"
+  },
+  "dependencies": {
+    "is-electron": "^2.2.0",
+    "electron-store": "^7.0.2",
+    "utility-types": "^3.10.0"
+  },
+  "jest": {
+    "preset": "ts-jest"
+  },
+  "devDependencies": {
+    "jest": "26.6.0",
+    "electron": "^10.2.0",
+    "ts-jest": "^26.4.4",
+    "@liuli-util/test": "^3.0.2"
+  }
+}
