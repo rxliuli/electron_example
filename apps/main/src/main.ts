@@ -1,9 +1,8 @@
 import { app, BrowserWindow, IpcMainInvokeEvent, Notification } from 'electron'
-import path = require('path')
-import { IpcMainProvider } from 'electron-ipc-main'
+import { IpcMainClient, IpcMainDefine, IpcMainProvider } from 'electron-ipc-main'
 import { HelloDefine, WindowDefine } from 'shared-type'
-import { IpcMainClient } from 'electron-ipc-main'
 import { autoUpdater } from 'electron-updater'
+import path = require('path')
 
 //添加热更新功能
 if (process.env.NODE_ENV === 'development') {
@@ -27,13 +26,13 @@ async function createMainWindow() {
     return mainWindow
 }
 
-class HelloApi {
+class HelloApi implements IpcMainDefine<HelloDefine> {
     async hello(e: IpcMainInvokeEvent, name: string) {
         return `hello ${name}`
     }
 }
 
-class WindowApi {
+class WindowApi implements IpcMainDefine<WindowDefine> {
     async action(e: IpcMainInvokeEvent, type: 'min' | 'max' | 'close') {
         const win = BrowserWindow.fromWebContents(e.sender)
         switch (type) {
