@@ -7,7 +7,6 @@
     "preset": "ts-jest"
   },
   "devDependencies": {
-    "jest": "26.6.0",
     "ts-jest": "^26.4.4",
     "electron-ipc-type": "*"
   }

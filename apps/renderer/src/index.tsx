@@ -1,20 +1,14 @@
 import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom'
-import 'normalize.css'
-import './index.css'
-import reportWebVitals from './reportWebVitals'
 import { HashRouter } from 'react-router-dom'
-import { RouteRender } from './components/router'
-import BasicLayout from './components/router/component/BasicLayout'
+import { renderRoutes } from 'react-router-config'
+import reportWebVitals from './reportWebVitals'
+import { routeList } from './constant/router'
 
 ReactDOM.render(
     <React.StrictMode>
         <HashRouter>
-            <Suspense fallback={'App 加载中...'}>
-                <BasicLayout>
-                    <RouteRender />
-                </BasicLayout>
-            </Suspense>
+            <Suspense fallback={'loading...'}>{renderRoutes(routeList)}</Suspense>
         </HashRouter>
     </React.StrictMode>,
     document.getElementById('root'),

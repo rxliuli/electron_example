@@ -1,0 +1,17 @@
+.settingsPage {
+    height: 100vh;
+}
+
+.sider {
+    background-color: #ffffff;
+}
+
+.logo {
+    background-color: #ffffff;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.content {
+    padding: 24px;
+}

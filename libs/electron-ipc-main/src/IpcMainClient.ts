@@ -20,9 +20,9 @@ export class IpcMainClient {
      */
     static gen<T extends BaseDefine<string>>(namespace: T['namespace'], win: BrowserWindow): IpcClientDefine<T> {
         return new Proxy(Object.create(null), {
-            get<K extends FunctionKeys<T>>(target: any, api: K): any {
+            get: (<K extends FunctionKeys<T>>(target: any, api: K): any => {
                 const key = namespace + '.' + api
-                return function (...args: any[]) {
+                return function(...args: any[]) {
                     return new Promise<ReturnType<T[K]>>((resolve, reject) => {
                         const id = Date.now() + '-' + Math.random()
                         ipcMain.once(id, (event, err, res) => {
@@ -37,7 +37,7 @@ export class IpcMainClient {
                         win.webContents.send(key, id, ...(args as any))
                     })
                 }
-            },
+            }) as any,
         })
     }
 }

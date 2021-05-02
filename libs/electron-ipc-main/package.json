@@ -21,7 +21,6 @@
     "@liuli-util/object": "^2.4.0"
   },
   "devDependencies": {
-    "jest": "26.6.0",
     "rollup-plugin-typescript2": "^0.29.0",
     "ts-jest": "^26.4.4",
     "utility-types": "^3.10.0"

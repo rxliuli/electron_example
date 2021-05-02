@@ -5,7 +5,7 @@ import { HelloDefine } from 'shared-type'
 const helloApi = IpcRendererClient.gen<HelloDefine>('HelloApi')
 const ipcRendererProvider = new IpcRendererProvider<HelloDefine>('HelloApi')
 
-function App() {
+export const App: React.FC = () => {
     const [text, setText] = useState('')
 
     async function onSend() {
@@ -48,5 +48,3 @@ function App() {
         </div>
     )
 }
-
-export default App
